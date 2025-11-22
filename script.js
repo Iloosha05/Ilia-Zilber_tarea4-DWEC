@@ -8,11 +8,10 @@ const defaultGameState = { /** Datos del heroe */
         defenseBonus: 2,
         currentRoom: 1,
         gold: 50,
-        potions: 2
-    },
+        potions: 2 },
 
-    map: { /** Lista de salas */
-        rooms: [
+    map: {
+        rooms: [ /** Lista de salas */
         {
             id: 1,
             monsterProb: 0.3,
@@ -23,8 +22,8 @@ const defaultGameState = { /** Datos del heroe */
             south: 0,
             east: 0,
             west: 0,
-            img: "entrada_bosque.png"
-        },
+            img: "entrada_bosque.png"},
+
         {
             id: 2,
             monsterProb: 0.5,
@@ -35,8 +34,8 @@ const defaultGameState = { /** Datos del heroe */
             south: 1,
             east: 6,
             west: 0,
-            img: "claro_sombrio.png"
-        },
+            img: "claro_sombrio.png"},
+            
         {
             id: 3,
             monsterProb: 0.2,
@@ -47,8 +46,8 @@ const defaultGameState = { /** Datos del heroe */
             south: 2,
             east: 0,
             west: 4,
-            img: "tienda_mago.png"
-        },
+            img: "tienda_mago.png"},
+            
         {
             id: 4,
             monsterProb: 0.6,
@@ -59,8 +58,8 @@ const defaultGameState = { /** Datos del heroe */
             south: 0,
             east: 3,
             west: 5,
-            img: "caverna_humeda.png"
-        },
+            img: "caverna_humeda.png"},
+            
         {
             id: 5,
             monsterProb: 0.8,
@@ -71,8 +70,8 @@ const defaultGameState = { /** Datos del heroe */
             south: 0,
             east: 4,
             west: 0,
-            img: "santuario_perdido.png"
-        },
+            img: "santuario_perdido.png"},
+            
         {
             id: 6,
             monsterProb: 0.4,
@@ -83,9 +82,36 @@ const defaultGameState = { /** Datos del heroe */
             south: 0,
             east: 0,
             west: 2,
-            img: "ribera_rio.png"
-        }
+            img: "ribera_rio.png"}
         ],
+        
+        enemies: [ /** Lista de enemigos */
+        {
+            name: "Goblin",
+            isBoss: false,
+            description: "Una criatura pequeña pero agresiva.",
+            health: 40,
+            strength: 8,
+            defence: 3,
+            img: "goblin.png"},
+            
+        {
+            name: "Lobo Sombrío",
+            isBoss: false,
+            description: "Sus ojos brillan en la oscuridad.",
+            health: 55,
+            strength: 10,
+            defence: 5,
+            img: "lobo_sombrio.png"},
 
-    }
-}
+        {
+            name: "Rey de los Huesos",
+            isBoss: true,
+            description: "Un poderoso señor no-muerto envuelto en magia oscura.",
+            health: 120,
+            strength: 18,
+            defence: 12,
+            img: "rey_huesos.png"}
+    ]
+  }
+};
