@@ -1,4 +1,4 @@
-const defaultGameState = { /** Datos del heroe */
+let defaultGameState = { /** Datos del heroe */
     player: {
         name: "Arden",
         health: 120,
@@ -14,104 +14,147 @@ const defaultGameState = { /** Datos del heroe */
         rooms: [ /** Lista de salas */
         {
             id: 1,
-            monsterProb: 0.3,
+            monsterProb: 0,
             isShop: false,
-            name: "Entrada del Bosque",
-            description: "Un sendero oscuro lleno de árboles retorcidos.",
-            north: 2,
+            name: "El patio de bloque",
+            description: "Un lugar caótico, rodeado de edificios altos.",
+            north: 0,
             south: 0,
             east: 0,
             west: 0,
-            img: "entrada_bosque.png"},
+            img: "patio.png"},
 
         {
             id: 2,
-            monsterProb: 0.5,
+            monsterProb: 0.7,
             isShop: false,
-            name: "Claro Sombrío",
-            description: "La luz apenas llega al centro del claro.",
-            north: 3,
+            name: "Garajes",
+            description: "Un laberinto de garajes soviéticos",
+            north: 0,
             south: 1,
-            east: 6,
+            east: 0,
             west: 0,
-            img: "claro_sombrio.png"},
+            img: "garajes.png"},
             
         {
             id: 3,
-            monsterProb: 0.2,
+            monsterProb: 0.7,
             isShop: true,
-            name: "Tienda del Viejo Mago",
-            description: "Una tienda llena de pociones y artefactos curiosos.",
-            north: 0,
-            south: 2,
-            east: 0,
-            west: 4,
-            img: "tienda_mago.png"},
+            name: "Tienda universal",
+            description: "Una tienda dónde se puede encontrar todo",
+            north: 1,
+            south: 0,
+            east: 1,
+            west: 0,
+            img: "tienda.png"},
             
         {
             id: 4,
-            monsterProb: 0.6,
+            monsterProb: 0.7,
             isShop: false,
-            name: "Caverna Húmeda",
-            description: "Las paredes gotean agua y huele a moho.",
+            name: "Portal",
+            description: "Nadie sabe que está pasando aquí",
             north: 0,
             south: 0,
-            east: 3,
-            west: 5,
-            img: "caverna_humeda.png"},
+            east: 0,
+            west: 1,
+            img: "portal.png"},
             
         {
             id: 5,
-            monsterProb: 0.8,
+            monsterProb: 0.7,
             isShop: false,
-            name: "Santuario Perdido",
-            description: "Ruinas antiguas con símbolos brillantes.",
-            north: 0,
+            name: "Zona infantil",
+            description: "Aquí me crié.",
+            north: 1,
             south: 0,
-            east: 4,
+            east: 0,
             west: 0,
-            img: "santuario_perdido.png"},
+            img: "infantil.png"},
             
         {
             id: 6,
-            monsterProb: 0.4,
+            monsterProb: 1,
             isShop: false,
-            name: "Ribera del Río",
-            description: "El sonido del agua te acompaña.",
+            name: "En el portal",
+            description: "Que oscuro..",
             north: 0,
             south: 0,
             east: 0,
             west: 2,
-            img: "ribera_rio.png"}
+            img: "en_portal.png"}
         ],
         
         enemies: [ /** Lista de enemigos */
         {
-            name: "Goblin",
+            name: "Gopnik",
             isBoss: false,
-            description: "Una criatura pequeña pero agresiva.",
+            description: "Una perona deportista y agresiva.",
             health: 40,
             strength: 8,
             defence: 3,
-            img: "goblin.png"},
+            img: "gopnik.png"},
             
         {
-            name: "Lobo Sombrío",
+            name: "Cliente enfadado",
             isBoss: false,
-            description: "Sus ojos brillan en la oscuridad.",
+            description: "Furioso y hambriento.",
             health: 55,
             strength: 10,
             defence: 5,
-            img: "lobo_sombrio.png"},
+            img: "cliente.png"},
 
         {
-            name: "Rey de los Huesos",
+            name: "Bandido",
             isBoss: true,
-            description: "Un poderoso señor no-muerto envuelto en magia oscura.",
+            description: "Tiene una pistola de aire",
             health: 120,
             strength: 18,
             defence: 12,
-            img: "rey_huesos.png"}
+            img: "bandido.png"}
     ]
   }
 };
+
+function mostrarHeroe() { /** Funccion para mostrar los datos del heroe */
+    let heroDiv = document.getElementById("hero-info");
+
+    heroDiv.innerHTML =
+    '<h3>' + defaultGameState.player.name + '</h3>' +
+    '<p>Salud: ' + defaultGameState.player.health + '</p>' +
+    '<p>Fuerza: ' + defaultGameState.player.strength +
+    ' (+' + defaultGameState.player.strengthBonus + ')</p>' +
+    '<p>Defensa: ' + defaultGameState.player.defense +
+    ' (+' + defaultGameState.player.defenseBonus + ')</p>' +
+    '<p>Oro: ' + defaultGameState.player.gold + '</p>' +
+    '<p>Pociones: ' + defaultGameState.player.potions + '</p>';
+}
+
+function mostrarSala() { /** Funccion para mostrar la sala */
+    let salaDiv = document.getElementById("room-info");
+    let rooms = defaultGameState.map.rooms;
+
+    let randomRoom = rooms[Math.floor(Math.random() * rooms.length)];
+
+    salaDiv.innerHTML =
+    "<h3>" + randomRoom.name + "</h3>" +
+    "<img src='img/" + randomRoom.img + "' width='200'>" +
+    "<p>" + randomRoom.description + "</p>" +
+    "<p>¿Tienda?: " + (randomRoom.isShop ? "Sí" : "No") + "</p>" +
+    "<p>Probabilidad de monstruos: " + randomRoom.monsterProb + "</p>";
+}
+
+function mostrarEnemigo() { /** Funccion para mostrar el enemigo */
+    let enemigoDiv = document.getElementById("enemy-info");
+    let enemies = defaultGameState.map.enemies;
+
+    const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+
+    enemigoDiv.innerHTML =
+    "<h3>" + randomEnemy.name + " " + (randomEnemy.isBoss ? "(Jefe)" : "") + "</h3>" +
+    "<img src='img/" + randomEnemy.img + "' width='200'>" +
+    "<p>" + randomEnemy.description + "</p>" +
+    "<p>Salud: " + randomEnemy.health + "</p>" +
+    "<p>Fuerza: " + randomEnemy.strength + "</p>" +
+    "<p>Defensa: " + randomEnemy.defence + "</p>";
+}
