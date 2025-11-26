@@ -1,6 +1,6 @@
 let defaultGameState = { /** Datos del heroe */
     player: {
-        name: "Arden",
+        name: "Ilia",
         health: 120,
         strength: 15,
         strengthBonus: 3,
@@ -89,7 +89,7 @@ let defaultGameState = { /** Datos del heroe */
         {
             name: "Gopnik",
             isBoss: false,
-            description: "Una perona deportista y agresiva.",
+            description: "Una persona deportista y agresiva.",
             health: 40,
             strength: 8,
             defence: 3,
