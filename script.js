@@ -10,7 +10,7 @@ let defaultGameState = { /** Datos del heroe */
         gold: 50,
         potions: 2 },
 
-    map: {
+    map: { /** Aquí duardamos todas las listas de salas y enemigos */
         rooms: [ /** Lista de salas */
         {
             id: 1,
@@ -77,7 +77,7 @@ let defaultGameState = { /** Datos del heroe */
             monsterProb: 1,
             isShop: false,
             name: "En el portal",
-            description: "Que oscuro..",
+            description: "Nadie aquí.. o...",
             north: 0,
             south: 0,
             east: 0,
@@ -138,9 +138,9 @@ function mostrarSala() { /** Funccion para mostrar la sala */
 
     salaDiv.innerHTML = /** Mostramos todo en el fichero .html */
     "<h3>" + randomRoom.name + "</h3>" +
-    "<img src='img/" + randomRoom.img + "' width='200'>" +
+    "<img src='img/" + randomRoom.img + "' >" +
     "<p>" + randomRoom.description + "</p>" +
-    "<p>¿Tienda?: " + (randomRoom.isShop ? "Sí" : "No") + "</p>" +
+    "<p>Tienda? " + (randomRoom.isShop ? "Sí" : "No") + "</p>" +
     "<p>Probabilidad de monstruos: " + randomRoom.monsterProb + "</p>";
 }
 
@@ -152,7 +152,8 @@ function mostrarEnemigo() { /** Funccion para mostrar el enemigo */
 
     enemigoDiv.innerHTML = /** Mostramos todo en el fichero .html */
     "<h3>" + randomEnemy.name + " " + (randomEnemy.isBoss ? "(Jefe)" : "") + "</h3>" +
-    "<img src='img/" + randomEnemy.img + "' width='200'>" +
+    "<img src='img/" + randomEnemy.img + "' >" +
+    "<p>Jefe? " + (randomEnemy.isBoss ? "Sí" : "No") + "</p>" +
     "<p>" + randomEnemy.description + "</p>" +
     "<p>Salud: " + randomEnemy.health + "</p>" +
     "<p>Fuerza: " + randomEnemy.strength + "</p>" +
