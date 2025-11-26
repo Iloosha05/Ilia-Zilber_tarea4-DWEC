@@ -93,7 +93,7 @@ let defaultGameState = { /** Datos del heroe */
             health: 40,
             strength: 8,
             defence: 3,
-            img: "gopnik.png"},
+            img: "gopnik.webp"},
             
         {
             name: "Cliente enfadado",
@@ -102,7 +102,7 @@ let defaultGameState = { /** Datos del heroe */
             health: 55,
             strength: 10,
             defence: 5,
-            img: "cliente.png"},
+            img: "cliente.webp"},
 
         {
             name: "Bandido",
@@ -111,15 +111,15 @@ let defaultGameState = { /** Datos del heroe */
             health: 120,
             strength: 18,
             defence: 12,
-            img: "bandido.png"}
+            img: "bandido.webp"}
     ]
   }
 };
 
 function mostrarHeroe() { /** Funccion para mostrar los datos del heroe */
-    let heroDiv = document.getElementById("hero-info");
+    let heroDiv = document.getElementById("hero-info"); /** La variable para el elemento por dónde vamos a exportar la información */
 
-    heroDiv.innerHTML =
+    heroDiv.innerHTML = /** Mostramos todo en el fichero .html */
     '<h3>' + defaultGameState.player.name + '</h3>' +
     '<p>Salud: ' + defaultGameState.player.health + '</p>' +
     '<p>Fuerza: ' + defaultGameState.player.strength +
@@ -131,12 +131,12 @@ function mostrarHeroe() { /** Funccion para mostrar los datos del heroe */
 }
 
 function mostrarSala() { /** Funccion para mostrar la sala */
-    let salaDiv = document.getElementById("room-info");
-    let rooms = defaultGameState.map.rooms;
+    let salaDiv = document.getElementById("room-info"); /** La variable para el elemento por dónde vamos a exportar la información */
+    let rooms = defaultGameState.map.rooms; /** Consultamos con el array de salas */
 
-    let randomRoom = rooms[Math.floor(Math.random() * rooms.length)];
+    let randomRoom = rooms[Math.floor(Math.random() * rooms.length)]; /** Obtenemos una sala aleatoria */
 
-    salaDiv.innerHTML =
+    salaDiv.innerHTML = /** Mostramos todo en el fichero .html */
     "<h3>" + randomRoom.name + "</h3>" +
     "<img src='img/" + randomRoom.img + "' width='200'>" +
     "<p>" + randomRoom.description + "</p>" +
@@ -145,12 +145,12 @@ function mostrarSala() { /** Funccion para mostrar la sala */
 }
 
 function mostrarEnemigo() { /** Funccion para mostrar el enemigo */
-    let enemigoDiv = document.getElementById("enemy-info");
-    let enemies = defaultGameState.map.enemies;
+    let enemigoDiv = document.getElementById("enemy-info"); /** La variable para el elemento por dónde vamos a exportar la información */
+    let enemies = defaultGameState.map.enemies; /** Consultamos con el array de enemigos */
 
-    const randomEnemy = enemies[Math.floor(Math.random() * enemies.length)];
+    let randomEnemy = enemies[Math.floor(Math.random() * enemies.length)]; /** Obtenemos un enemigo aleatorio */
 
-    enemigoDiv.innerHTML =
+    enemigoDiv.innerHTML = /** Mostramos todo en el fichero .html */
     "<h3>" + randomEnemy.name + " " + (randomEnemy.isBoss ? "(Jefe)" : "") + "</h3>" +
     "<img src='img/" + randomEnemy.img + "' width='200'>" +
     "<p>" + randomEnemy.description + "</p>" +
