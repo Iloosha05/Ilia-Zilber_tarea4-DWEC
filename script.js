@@ -89,7 +89,7 @@ let defaultGameState = { /** Datos del heroe */
         {
             name: "Gopnik",
             isBoss: false,
-            description: "Una persona deportista y agresiva.",
+            description: "Una perona deportista y agresiva.",
             health: 40,
             strength: 8,
             defence: 3,
